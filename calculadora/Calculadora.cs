@@ -4,7 +4,7 @@ namespace EspacioCalculadora;
     {
         private double dato;
         
-        public double Dato
+        public double Resultado
         {
             get { return dato; }
             

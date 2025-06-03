@@ -15,34 +15,45 @@ class Program
             if (opcion != "0" && opcion!= "5")
             {
                 Console.WriteLine("Ingrese un numero para realizarle la operacion elegida");
-                int.TryParse(num=Console.ReadLine(), out numero);
+                num = Console.ReadLine();
+                int.TryParse(num, out numero);
             }
 
             switch (opcion)
             {
                 case "1":
                     calc.Sumar(numero);
-                     Console.WriteLine("Resultado: " + calc.Dato);
+                     Console.WriteLine("Resultado: " + calc.Resultado);
                     break;
 
                 case "2":
                     calc.Restar(numero);
-                     Console.WriteLine("Resultado: " + calc.Dato);
+                     Console.WriteLine("Resultado: " + calc.Resultado);
                     break;
 
                 case "3":
                     calc.Multiplicar(numero);
-                     Console.WriteLine("Resultado: " + calc.Dato);
+                     Console.WriteLine("Resultado: " + calc.Resultado);
                     break;
 
                 case "4":
-                    calc.Dividir(numero);
-                     Console.WriteLine("Resultado: " + calc.Dato);
+                    if (numero == 0)
+                    {
+                        Console.WriteLine("La division por cero no esta disponible.");
+
+                    }
+                    else
+                    {
+                        calc.Dividir(numero);
+                        Console.WriteLine("Resultado: " + calc.Resultado);
+                        
+                    }
+                    
                     break;
 
                 case "5":
                     calc.Limpiar();
-                    Console.WriteLine($"El resultado luego de limpiar es: {calc.Dato}");
+                    Console.WriteLine($"El resultado luego de limpiar es: {calc.Resultado}");
                     break;
 
                 case "0":
