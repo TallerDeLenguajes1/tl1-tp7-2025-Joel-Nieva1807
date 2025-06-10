@@ -35,27 +35,28 @@ public class Empleado
 
     public Cargos Cargo { get; set; }
 
-    public int Antiguedad(DateTime ingreso)
+    public int Antiguedad()
     {
         DateTime Hoy = DateTime.Now; // tomo la fecha de hoy
 
-        int antigued = Hoy.Year - ingreso.Year;
+        int antigued = Hoy.Year - FechaIngreso.Year;
 
         return antigued;
 
 
     }
 
-    public int Edad(DateTime nacimiento)
+    public int Edad()
     {
-        int Anios = DateTime.Now.Year - nacimiento.Year;
+        int Anios = DateTime.Now.Year - FechNacimiento.Year;
         return Anios;
 
     }
 
-    public int Jubilacion(DateTime ingreso)
+    public int Jubilacion()
     {
-        int jubi = 65 - (DateTime.Now.Year - ingreso.Year);
+        int jubi = 65 - Antiguedad();
+        
 
         if (jubi <= 0) //por si ya se jubilo
         {
@@ -64,23 +65,23 @@ public class Empleado
         return jubi;
     }
 
-    public double Salario(int antigued, Cargos cargo, char EstadoCivil, double SueldoBasico)
+    public double Salario()
     {
         double adicional=0;
 
-        if (antigued > 20)
+        if (Antiguedad() > 20)
         {
             adicional = adicional + (SueldoBasico * 0.25);
 
         }
         else
         {
-            adicional = adicional + (SueldoBasico * (antigued / 100.0));
+            adicional = adicional + (SueldoBasico * (Antiguedad() / 100.0));
             double i = adicional;
-             double ii = antigued;
+             double ii = Antiguedad();
         }
 
-        if (cargo == Cargos.Ingeniero || cargo == Cargos.Especialista)
+        if (Cargo == Cargos.Ingeniero || Cargo == Cargos.Especialista)
         {
             adicional = adicional * 1.50;
         }
